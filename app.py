@@ -27,8 +27,8 @@ CORS(app)
 chatbot = bot.ChatBot(channel="Jarvis")
 
 class Bot(Resource):
-    def post(self):
-        message = request.json['message']
+    def get(self):
+        message = request.args.get('message')
         reply = chatbot.getResponse(query=message)
         response = {'message': str(reply)}
         return response
